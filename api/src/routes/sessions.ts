@@ -2,9 +2,11 @@ import * as bcrypt from 'bcrypt'
 import { FastifyInstance, RouteOptions } from 'fastify'
 
 import { User } from '../models'
+import { schema_session } from '../schemas'
 
 const login: RouteOptions = {
   method: 'POST',
+  schema: schema_session,
   url: '/sessions',
   async handler(request, reply) {
     const {
@@ -28,6 +30,8 @@ const login: RouteOptions = {
     const token = await reply.jwtSign({
       userId: user.id
     })
+
+    reply.status(201)
 
     return {
       token,

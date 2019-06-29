@@ -2,9 +2,11 @@ import * as bcrypt from 'bcrypt'
 import { FastifyInstance, RouteOptions } from 'fastify'
 
 import { User } from '../models'
+import { schema_session, schema_user } from '../schemas'
 
 const createUser: RouteOptions = {
   method: 'POST',
+  schema: schema_session,
   url: '/users',
   async handler(request, reply) {
     const {
@@ -23,6 +25,8 @@ const createUser: RouteOptions = {
       userId: user.id
     })
 
+    reply.status(201)
+
     return {
       token,
       user: user.toJSON({
@@ -34,6 +38,7 @@ const createUser: RouteOptions = {
 
 const getUser: RouteOptions = {
   method: 'GET',
+  schema: schema_user,
   url: '/profile',
   async handler(request) {
     const { userId } = await request.jwtVerify()

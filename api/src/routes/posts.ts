@@ -1,9 +1,16 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
 
 import { Post, Team } from '../models'
+import {
+  schema_comment,
+  schema_comments,
+  schema_post,
+  schema_posts
+} from '../schemas'
 
 const getPosts: RouteOptions = {
   method: 'GET',
+  schema: schema_posts,
   url: '/teams/:slug/posts',
   async handler(request) {
     const { userId } = await request.jwtVerify()
@@ -42,8 +49,9 @@ const getPosts: RouteOptions = {
 
 const createPost: RouteOptions = {
   method: 'POST',
+  schema: schema_post,
   url: '/teams/:slug/posts',
-  async handler(request) {
+  async handler(request, reply) {
     const { userId } = await request.jwtVerify()
 
     const {
@@ -77,6 +85,8 @@ const createPost: RouteOptions = {
 
     await post.save()
 
+    reply.status(201)
+
     return {
       post: post.toJSON({
         virtuals: true
@@ -87,6 +97,7 @@ const createPost: RouteOptions = {
 
 const getPost: RouteOptions = {
   method: 'GET',
+  schema: schema_post,
   url: '/teams/:slug/posts/:postId',
   async handler(request) {
     const { userId } = await request.jwtVerify()
@@ -126,6 +137,7 @@ const getPost: RouteOptions = {
 
 const getComments: RouteOptions = {
   method: 'GET',
+  schema: schema_comments,
   url: '/teams/:slug/posts/:postId/comments',
   async handler(request) {
     const { userId } = await request.jwtVerify()
@@ -168,8 +180,9 @@ const getComments: RouteOptions = {
 
 const createComment: RouteOptions = {
   method: 'POST',
+  schema: schema_comment,
   url: '/teams/:slug/posts/:postId/comments',
-  async handler(request) {
+  async handler(request, reply) {
     const { userId } = await request.jwtVerify()
 
     const {
@@ -203,6 +216,8 @@ const createComment: RouteOptions = {
     const comment = post.addComment(userId, body)
 
     await post.save()
+
+    reply.status(201)
 
     return {
       comment: comment.toJSON({

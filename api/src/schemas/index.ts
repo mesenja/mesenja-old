@@ -1,0 +1,8 @@
+export { default as schema_comment } from './comment'
+export { default as schema_comments } from './comments'
+export { default as schema_post } from './post'
+export { default as schema_posts } from './posts'
+export { default as schema_session } from './session'
+export { default as schema_team } from './team'
+export { default as schema_teams } from './teams'
+export { default as schema_user } from './user'

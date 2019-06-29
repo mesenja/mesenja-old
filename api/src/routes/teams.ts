@@ -2,9 +2,11 @@ import { FastifyInstance, RouteOptions } from 'fastify'
 import { kebabCase } from 'lodash'
 
 import { Team, User } from '../models'
+import { schema_team, schema_teams } from '../schemas'
 
 const getTeams: RouteOptions = {
   method: 'GET',
+  schema: schema_teams,
   url: '/teams',
   async handler(request) {
     const { userId } = await request.jwtVerify()
@@ -33,8 +35,9 @@ const getTeams: RouteOptions = {
 
 const createTeam: RouteOptions = {
   method: 'POST',
+  schema: schema_team,
   url: '/teams',
-  async handler(request) {
+  async handler(request, reply) {
     const { userId } = await request.jwtVerify()
 
     const {
@@ -52,6 +55,8 @@ const createTeam: RouteOptions = {
 
     await team.save()
 
+    reply.status(201)
+
     return {
       team: team.toJSON({
         virtuals: true
@@ -62,6 +67,7 @@ const createTeam: RouteOptions = {
 
 const getTeam: RouteOptions = {
   method: 'GET',
+  schema: schema_team,
   url: '/teams/:teamId',
   async handler(request) {
     const { userId } = await request.jwtVerify()
