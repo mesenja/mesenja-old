@@ -8,7 +8,7 @@ import { schema_session } from '../schemas'
 const register: RouteOptions = {
   method: 'POST',
   schema: schema_session,
-  url: '/users',
+  url: '/register',
   async handler(request, reply) {
     const {
       body: {
@@ -72,17 +72,24 @@ const login: RouteOptions = {
       throw new Error('Invalid password')
     }
 
-    const { id, team } = user
+    const team = await Team.findById(user.team)
+
+    if (!team) {
+      throw new Error('Team not found')
+    }
 
     const token = await reply.jwtSign({
-      teamId: team,
-      userId: id
+      teamId: team.id,
+      userId: user.id
     })
 
     reply.status(201)
 
     return {
       token,
+      team: team.toJSON({
+        virtuals: true
+      }),
       user: user.toJSON({
         virtuals: true
       })
