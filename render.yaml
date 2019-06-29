@@ -5,5 +5,5 @@ services:
     name: mesenja-api
     env: node
     repo: https://github.com/mesenja/mesenja
-    buildCommand: cd api && yarn
+    buildCommand: cd api && yarn && yarn build
     startCommand: cd api && yarn start
