@@ -1,0 +1,9 @@
+version: 1
+
+services:
+  - type: web
+    name: mesenja-api
+    env: node
+    repo: https://github.com/mesenja/mesenja
+    buildCommand: cd api && yarn
+    startCommand: cd api && yarn start
