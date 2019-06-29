@@ -9,11 +9,22 @@ export const post = {
     id: {
       type: 'string'
     },
+    liked: {
+      type: 'boolean'
+    },
     likes: {
       items: {
         type: 'string'
       },
       type: 'array'
+    },
+    meta: {
+      properties: {
+        comments: {
+          type: 'number'
+        }
+      },
+      type: 'object'
     },
     pinned: {
       type: 'boolean'

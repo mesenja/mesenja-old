@@ -40,6 +40,8 @@ const getPosts: RouteOptions = {
     return {
       posts: posts.map(post =>
         post.toJSON({
+          // @ts-ignore
+          userId,
           virtuals: true
         })
       )
@@ -89,6 +91,8 @@ const createPost: RouteOptions = {
 
     return {
       post: post.toJSON({
+        // @ts-ignore
+        userId,
         virtuals: true
       })
     }
@@ -129,6 +133,8 @@ const getPost: RouteOptions = {
 
     return {
       post: post.toJSON({
+        // @ts-ignore
+        userId,
         virtuals: true
       })
     }
