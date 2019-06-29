@@ -1,17 +1,9 @@
-import {
-  Typegoose,
-  InstanceType,
-  ModelType,
-  Ref,
-  arrayProp,
-  instanceMethod,
-  prop
-} from 'typegoose'
+import { Typegoose, Ref, prop } from 'typegoose'
 
 import { Team } from './team'
 
 export class User extends Typegoose {
-  @prop({ unique: true })
+  @prop()
   email: string
 
   @prop()
@@ -20,21 +12,14 @@ export class User extends Typegoose {
   @prop()
   name: string
 
-  @arrayProp({ itemsRef: Team })
-  teams: Ref<Team>[]
+  @prop({ ref: Team })
+  team: Ref<Team>
 
   @prop({ default: new Date() })
   created: Date
 
   @prop({ default: new Date() })
   updated: Date
-
-  @instanceMethod
-  async addTeam(this: InstanceType<User>, team: InstanceType<Team>) {
-    this.teams.push(team)
-
-    return this.save()
-  }
 }
 
 export default new User().getModelForClass(User)

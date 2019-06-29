@@ -1,8 +1,53 @@
 import * as bcrypt from 'bcrypt'
 import { FastifyInstance, RouteOptions } from 'fastify'
+import { kebabCase } from 'lodash'
 
-import { User } from '../models'
+import { Team, User } from '../models'
 import { schema_session } from '../schemas'
+
+const register: RouteOptions = {
+  method: 'POST',
+  schema: schema_session,
+  url: '/users',
+  async handler(request, reply) {
+    const {
+      body: {
+        team: { name: teamName },
+        user: { email, name, password }
+      }
+    } = request
+
+    const team = new Team({
+      name: teamName,
+      slug: kebabCase(teamName)
+    })
+
+    const user = await User.create({
+      email,
+      name,
+      password: await bcrypt.hash(password, 10)
+    })
+
+    await team.addMember(user.id, 'owner')
+
+    const token = await reply.jwtSign({
+      teamId: team.id,
+      userId: user.id
+    })
+
+    reply.status(201)
+
+    return {
+      token,
+      team: team.toJSON({
+        virtuals: true
+      }),
+      user: user.toJSON({
+        virtuals: true
+      })
+    }
+  }
+}
 
 const login: RouteOptions = {
   method: 'POST',
@@ -27,8 +72,11 @@ const login: RouteOptions = {
       throw new Error('Invalid password')
     }
 
+    const { id, team } = user
+
     const token = await reply.jwtSign({
-      userId: user.id
+      teamId: team,
+      userId: id
     })
 
     reply.status(201)
@@ -43,6 +91,7 @@ const login: RouteOptions = {
 }
 
 export default (fastify: FastifyInstance, options: any, next: any) => {
+  fastify.route(register)
   fastify.route(login)
 
   next()

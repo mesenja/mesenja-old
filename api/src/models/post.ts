@@ -28,7 +28,7 @@ export class Comment extends Typegoose {
   @prop()
   body: string
 
-  @prop()
+  @prop({ ref: User })
   user: Ref<User>
 
   @prop({ default: new Date() })
@@ -62,10 +62,10 @@ export class Post extends Typegoose {
   @arrayProp({ itemsRef: User })
   seen: Ref<User>[]
 
-  @prop()
+  @prop({ ref: Team })
   team: Ref<Team>
 
-  @prop()
+  @prop({ ref: User })
   user: Ref<User>
 
   @prop({ default: new Date() })

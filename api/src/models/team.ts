@@ -56,14 +56,19 @@ export class Team extends Typegoose {
 
     await this.save()
 
-    const user = await UserModel.findById(userId)
-
-    await user.addTeam(this)
+    await UserModel.findByIdAndUpdate(userId, {
+      team: this.id
+    })
   }
 
   @instanceMethod
   isMember(this: InstanceType<Team>, userId: InstanceType<User>) {
-    return Boolean(this.members.find(({ user }) => user === userId))
+    return Boolean(
+      this.members.find(({ user }) =>
+        // @ts-ignore
+        user.equals(userId)
+      )
+    )
   }
 }
 

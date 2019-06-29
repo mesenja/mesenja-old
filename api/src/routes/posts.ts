@@ -11,17 +11,11 @@ import {
 const getPosts: RouteOptions = {
   method: 'GET',
   schema: schema_posts,
-  url: '/teams/:slug/posts',
+  url: '/posts',
   async handler(request) {
-    const { userId } = await request.jwtVerify()
+    const { teamId, userId } = await request.jwtVerify()
 
-    const {
-      params: { slug }
-    } = request
-
-    const team = await Team.findOne({
-      slug
-    })
+    const team = await Team.findById(teamId)
 
     if (!team) {
       throw new Error('Team not found')
@@ -52,20 +46,17 @@ const getPosts: RouteOptions = {
 const createPost: RouteOptions = {
   method: 'POST',
   schema: schema_post,
-  url: '/teams/:slug/posts',
+  url: '/posts',
   async handler(request, reply) {
-    const { userId } = await request.jwtVerify()
+    const { teamId, userId } = await request.jwtVerify()
 
     const {
       body: {
         post: { body, pinned }
-      },
-      params: { slug }
+      }
     } = request
 
-    const team = await Team.findOne({
-      slug
-    })
+    const team = await Team.findById(teamId)
 
     if (!team) {
       throw new Error('Team not found')
@@ -102,17 +93,15 @@ const createPost: RouteOptions = {
 const getPost: RouteOptions = {
   method: 'GET',
   schema: schema_post,
-  url: '/teams/:slug/posts/:postId',
+  url: '/posts/:postId',
   async handler(request) {
-    const { userId } = await request.jwtVerify()
+    const { teamId, userId } = await request.jwtVerify()
 
     const {
-      params: { postId, slug }
+      params: { postId }
     } = request
 
-    const team = await Team.findOne({
-      slug
-    })
+    const team = await Team.findById(teamId)
 
     if (!team) {
       throw new Error('Team not found')
@@ -144,17 +133,15 @@ const getPost: RouteOptions = {
 const getComments: RouteOptions = {
   method: 'GET',
   schema: schema_comments,
-  url: '/teams/:slug/posts/:postId/comments',
+  url: '/posts/:postId/comments',
   async handler(request) {
-    const { userId } = await request.jwtVerify()
+    const { teamId, userId } = await request.jwtVerify()
 
     const {
-      params: { postId, slug }
+      params: { postId }
     } = request
 
-    const team = await Team.findOne({
-      slug
-    })
+    const team = await Team.findById(teamId)
 
     if (!team) {
       throw new Error('Team not found')
@@ -187,20 +174,18 @@ const getComments: RouteOptions = {
 const createComment: RouteOptions = {
   method: 'POST',
   schema: schema_comment,
-  url: '/teams/:slug/posts/:postId/comments',
+  url: '/posts/:postId/comments',
   async handler(request, reply) {
-    const { userId } = await request.jwtVerify()
+    const { teamId, userId } = await request.jwtVerify()
 
     const {
       body: {
         comment: { body }
       },
-      params: { postId, slug }
+      params: { postId }
     } = request
 
-    const team = await Team.findOne({
-      slug
-    })
+    const team = await Team.findById(teamId)
 
     if (!team) {
       throw new Error('Team not found')

@@ -1,3 +1,4 @@
+import { team } from './team'
 import { user } from './user'
 
 export default {
@@ -7,6 +8,7 @@ export default {
         token: {
           type: 'string'
         },
+        team,
         user
       },
       type: 'object'
