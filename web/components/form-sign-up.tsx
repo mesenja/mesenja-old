@@ -17,10 +17,10 @@ interface Props {
 }
 
 const SignUpForm: FunctionComponent<Props> = ({ className, onRegister }) => {
-  const [name, setName] = useState('Ali Zahid')
-  const [email, setEmail] = useState('ali.zahid@live.com')
-  const [password, setPassword] = useState('test1234')
-  const [teamName, setTeamName] = useState('Mesenja')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [teamName, setTeamName] = useState('')
 
   const update = (event: ChangeEvent<HTMLInputElement>, key: string) => {
     const {
