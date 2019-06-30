@@ -8,6 +8,8 @@ import * as jwt from 'fastify-jwt'
 import routes from './routes'
 
 mongoose.connect(MONGO_URI, {
+  useCreateIndex: true,
+  useFindAndModify: true,
   useNewUrlParser: true
 })
 
