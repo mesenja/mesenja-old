@@ -6,10 +6,10 @@
   justify-content: center;
 }
 
-.register__header {
-  border-right: 1px solid $color-border;
-  margin-right: $layout-margin;
-  padding-bottom: $layout-margin;
-  padding-right: $layout-margin;
-  padding-top: $layout-margin;
+.register__form {
+  border-left: 1px solid $color-border;
+  margin-left: $layout-margin;
+  padding-bottom: $layout-padding;
+  padding-left: $layout-margin;
+  padding-top: $layout-padding;
 }

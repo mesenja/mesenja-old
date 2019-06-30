@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 
-import { Header } from '../components'
+import { Logo } from '../components'
 
 import './index.scss'
 
@@ -12,7 +12,7 @@ const Index: FunctionComponent = () => {
       <Head>
         <title>Mesenja</title>
       </Head>
-      <Header className="index__header" />
+      <Logo className="index__logo" />
       <main>
         <p>Mesenja helps you communicate with your team better</p>
         <Link href="/register">

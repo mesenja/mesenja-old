@@ -6,6 +6,8 @@ import React, {
 } from 'react'
 
 interface Props {
+  className?: string
+
   onRegister(user: {
     name: string
     email: string
@@ -14,7 +16,7 @@ interface Props {
   }): void
 }
 
-const SignUpForm: FunctionComponent<Props> = ({ onRegister }) => {
+const SignUpForm: FunctionComponent<Props> = ({ className, onRegister }) => {
   const [name, setName] = useState('Ali Zahid')
   const [email, setEmail] = useState('ali.zahid@live.com')
   const [password, setPassword] = useState('test1234')
@@ -56,7 +58,7 @@ const SignUpForm: FunctionComponent<Props> = ({ onRegister }) => {
   }
 
   return (
-    <form onSubmit={submit}>
+    <form className={className} onSubmit={submit}>
       <label>
         <input
           onChange={event => update(event, 'name')}

@@ -3,7 +3,7 @@ import Router from 'next/router'
 import React, { FunctionComponent } from 'react'
 
 import { useStoreActions, useStoreState } from '../store'
-import { Header, FormSignUp } from '../components'
+import { FormSignUp, Logo } from '../components'
 
 import './register.scss'
 
@@ -22,8 +22,8 @@ const Register: FunctionComponent = () => {
       <Head>
         <title>Sign up: Mesenja</title>
       </Head>
-      <Header className="register__header" />
-      <FormSignUp onRegister={register} />
+      <Logo />
+      <FormSignUp className="register__form" onRegister={register} />
     </main>
   )
 }
