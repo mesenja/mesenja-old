@@ -1,0 +1,37 @@
+$color-primary: #34495e;
+$color-primary-dark: darken($color-primary, 10%);
+$color-accent: #28a0a0;
+
+$color-background: #fff;
+$color-background-dark: darken($color-background, 5%);
+$color-border: $color-background-dark;
+$color-highlight: lighten(#fc0, 45%);
+$color-modal: rgba(0, 0, 0, 0.25);
+$color-notification: #ff3b30;
+$color-shadow: 0 0 0.5em rgba(0, 0, 0, 0.075);
+
+$color-text: #000;
+$color-text-light: lighten($color-text, 40%);
+
+$text-line-height: 1.4;
+$text-size-large: 1.5em;
+$text-size-regular: 1em;
+$text-size-small: 0.875em;
+$text-weight-bold: 600;
+
+$transition: 0.2s;
+
+$layout-margin: 2em;
+$layout-padding: 1em;
+
+$border-radius: 0.25em;
+
+$responsive-break: 480px;
+
+$spinner-size: 2em;
+$spinner-border-width: 2px;
+
+$avatar-size: 2em;
+$nav-bar-size: 3em;
+
+$column-width: 24em;
