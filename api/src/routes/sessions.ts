@@ -52,7 +52,7 @@ const register: RouteOptions = {
 const login: RouteOptions = {
   method: 'POST',
   schema: schema_session,
-  url: '/sessions',
+  url: '/login',
   async handler(request, reply) {
     const {
       body: {
