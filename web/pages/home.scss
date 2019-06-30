@@ -3,13 +3,10 @@
 .home__main {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-.home__header {
-  border-right: 1px solid $color-border;
-  margin-right: $layout-margin;
-  padding-bottom: $layout-margin;
-  padding-right: $layout-margin;
-  padding-top: $layout-margin;
+.home__team {
+  margin-bottom: $layout-margin;
 }

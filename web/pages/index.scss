@@ -13,3 +13,12 @@
   padding-right: $layout-margin;
   padding-top: $layout-margin;
 }
+
+.index__login {
+  color: $color-text-light;
+  margin-left: $layout-margin;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

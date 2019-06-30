@@ -1,0 +1,15 @@
+@import '../assets/variables';
+
+.login__main {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.login__form {
+  border-left: 1px solid $color-border;
+  margin-left: $layout-margin;
+  padding-bottom: $layout-padding;
+  padding-left: $layout-margin;
+  padding-top: $layout-padding;
+}

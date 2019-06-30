@@ -42,6 +42,7 @@ export interface SessionModel {
   login: Thunk<SessionModel, LoginProps>
   fetchUser: Thunk<SessionModel>
 
+  logout: Action<SessionModel>
   session: Action<SessionModel, SessionProps>
 }
 
@@ -70,6 +71,12 @@ const user: SessionModel = {
     actions.session(response)
   }),
 
+  logout: action(state => {
+    cookie.remove('token')
+
+    state.team = undefined
+    state.user = undefined
+  }),
   session: action((state, payload) => {
     Object.assign(state, payload)
   })

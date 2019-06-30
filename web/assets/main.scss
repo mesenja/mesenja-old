@@ -80,6 +80,7 @@ form {
     border: none;
     font: inherit;
     margin: $layout-padding 0;
+    min-width: 15em;
     padding: $layout-padding;
   }
 }

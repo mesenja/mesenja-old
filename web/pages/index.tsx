@@ -15,9 +15,14 @@ const Index: FunctionComponent = () => {
       <Logo className="index__logo" />
       <main>
         <p>Mesenja helps you communicate with your team better</p>
-        <Link href="/register">
-          <button>Get started</button>
-        </Link>
+        <footer>
+          <Link href="/register">
+            <button>Get started</button>
+          </Link>
+          <Link href="/login">
+            <a className="index__login">Login</a>
+          </Link>
+        </footer>
       </main>
     </main>
   )
