@@ -46,13 +46,17 @@ export interface SessionModel {
   session: Action<SessionModel, SessionProps>
 }
 
+const saveToken = (token: string) => {
+  cookie.set('token', token)
+}
+
 const user: SessionModel = {
   register: thunk(async (actions, { email, name, password, teamName }) => {
     const response = await api.register(name, email, password, teamName)
 
     const { token } = response
 
-    cookie.set('token', token)
+    saveToken(token)
 
     actions.session(response)
   }),
@@ -61,7 +65,7 @@ const user: SessionModel = {
 
     const { token } = response
 
-    cookie.set('token', token)
+    saveToken(token)
 
     actions.session(response)
   }),
