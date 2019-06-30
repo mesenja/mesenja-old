@@ -1,2 +1,2 @@
-export { default as FormSignUp } from './form-sign-up'
+export { default as FormRegister } from './form.register'
 export { default as Logo } from './logo'

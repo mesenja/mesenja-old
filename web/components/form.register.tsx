@@ -16,7 +16,7 @@ interface Props {
   }): void
 }
 
-const SignUpForm: FunctionComponent<Props> = ({ className, onRegister }) => {
+const FormRegister: FunctionComponent<Props> = ({ className, onRegister }) => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -98,4 +98,4 @@ const SignUpForm: FunctionComponent<Props> = ({ className, onRegister }) => {
   )
 }
 
-export default SignUpForm
+export default FormRegister
