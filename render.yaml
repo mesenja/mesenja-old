@@ -7,3 +7,10 @@ services:
     repo: https://github.com/mesenja/mesenja
     buildCommand: cd api && yarn && yarn build
     startCommand: cd api && yarn start
+
+  - type: web
+    name: mesenja-web
+    env: node
+    repo: https://github.com/mesenja/mesenja
+    buildCommand: cd web && yarn && yarn build
+    startCommand: cd web && yarn start
