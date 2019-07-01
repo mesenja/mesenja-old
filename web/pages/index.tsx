@@ -3,12 +3,13 @@ import Link from 'next/link'
 import React, { FunctionComponent } from 'react'
 
 import { Logo } from '../components'
+import { Main } from '../layouts'
 
 import './index.scss'
 
 const Index: FunctionComponent = () => {
   return (
-    <main className="index__main">
+    <Main className="index__main">
       <Head>
         <title>Mesenja</title>
       </Head>
@@ -24,7 +25,7 @@ const Index: FunctionComponent = () => {
           </Link>
         </footer>
       </main>
-    </main>
+    </Main>
   )
 }
 

@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Router from 'next/router'
 import React, { FunctionComponent } from 'react'
 
-import { useStoreActions, useStoreState } from '../store'
 import { FormLogin, Logo } from '../components'
+import { Main } from '../layouts'
+import { useStoreActions, useStoreState } from '../store'
 
 import './login.scss'
 
@@ -18,13 +19,13 @@ const Login: FunctionComponent = () => {
   }
 
   return (
-    <main className="login__main">
+    <Main className="login__main">
       <Head>
         <title>Login: Mesenja</title>
       </Head>
       <Logo />
       <FormLogin className="login__form" onLogin={login} />
-    </main>
+    </Main>
   )
 }
 
