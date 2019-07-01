@@ -1,6 +1,7 @@
 import cookies from 'next-cookies'
 import React from 'react'
-import App, { Container, NextAppContext } from 'next/app'
+import Router from 'next/router'
+import { Container, AppComponentType } from 'next/app'
 import { StoreProvider } from 'easy-peasy'
 
 import createStore from '../store'
@@ -9,49 +10,73 @@ import { api } from '../services'
 import '../assets/main.scss'
 
 interface Props {
+  props: any
   state: any
 }
 
-export default class Mesenja extends App<Props> {
-  static async getInitialProps({ Component, ctx }: NextAppContext) {
-    let pageProps = {}
+const Mesenja: AppComponentType<Props> = ({ Component, state, props }) => {
+  const store = createStore(state)
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
-    }
+  return (
+    <Container>
+      <StoreProvider store={store}>
+        <Component {...props} />
+      </StoreProvider>
+    </Container>
+  )
+}
 
-    const { token } = cookies(ctx)
+Mesenja.getInitialProps = async ({ Component, ctx }) => {
+  const redirect = (path: string) => {
+    const { res } = ctx
 
-    const state: any = {}
+    if (res) {
+      res.writeHead(302, {
+        Location: path
+      })
 
-    if (token) {
-      api.setToken(token)
-
-      const { team, user } = await api.profile()
-
-      state.session = {
-        team,
-        user
-      }
-    }
-
-    return {
-      pageProps,
-      state
+      res.end()
+    } else {
+      Router.replace(path)
     }
   }
 
-  render() {
-    const { Component, pageProps, state } = this.props
+  let props = {}
 
-    const store = createStore(state)
+  if (Component.getInitialProps) {
+    props = await Component.getInitialProps(ctx)
+  }
 
-    return (
-      <Container>
-        <StoreProvider store={store}>
-          <Component {...pageProps} />
-        </StoreProvider>
-      </Container>
-    )
+  const { token } = cookies(ctx)
+
+  const state: any = {}
+
+  if (token) {
+    api.setToken(token)
+
+    const { team, user } = await api.profile()
+
+    state.session = {
+      team,
+      user
+    }
+  }
+
+  const { pathname } = ctx
+
+  if (state.session && /(login|register|\/$)/.test(pathname)) {
+    redirect('/feed')
+  } else if (
+    !state.session &&
+    /(feed|posts|messages|members|settings)/.test(pathname)
+  ) {
+    redirect('/')
+  }
+
+  return {
+    props,
+    state
   }
 }
+
+export default Mesenja

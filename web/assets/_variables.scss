@@ -1,5 +1,6 @@
 $color-primary: rgb(31, 34, 41);
 $color-primary-dark: darken($color-primary, 10%);
+$color-primary-light: lighten($color-primary, 10%);
 $color-accent: rgb(73, 211, 180);
 
 $color-background: #fff;

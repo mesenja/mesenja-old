@@ -1,12 +1,13 @@
 @import '../assets/variables';
 
-.home__main {
+.feed__main {
   align-items: center;
   display: flex;
   flex-direction: column;
+  flex: 1;
   justify-content: center;
 }
 
-.home__team {
+.feed__team {
   margin-bottom: $layout-margin;
 }

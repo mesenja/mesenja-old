@@ -1,4 +1,5 @@
 import cookie from 'js-cookie'
+import Router from 'next/router'
 import { Action, Thunk, action, thunk } from 'easy-peasy'
 
 import { api } from '../services'
@@ -46,8 +47,10 @@ export interface SessionModel {
   session: Action<SessionModel, SessionProps>
 }
 
-const saveToken = (token: string) => {
+const login = (token: string) => {
   cookie.set('token', token)
+
+  Router.replace('/feed')
 }
 
 const user: SessionModel = {
@@ -56,7 +59,7 @@ const user: SessionModel = {
 
     const { token } = response
 
-    saveToken(token)
+    login(token)
 
     actions.session(response)
   }),
@@ -65,7 +68,7 @@ const user: SessionModel = {
 
     const { token } = response
 
-    saveToken(token)
+    login(token)
 
     actions.session(response)
   }),

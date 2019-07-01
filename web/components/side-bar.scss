@@ -1,0 +1,27 @@
+@import '../assets/variables';
+
+.side-bar {
+  background: $color-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+
+    a {
+      color: $color-background;
+
+      &.active {
+        background: $color-primary-light;
+      }
+
+      img {
+        height: 1.5em;
+        margin: 1em;
+        width: 1.5em;
+      }
+    }
+  }
+}
