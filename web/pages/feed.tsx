@@ -17,7 +17,9 @@ const copy = (feed: IFeed) => {
     case 'team_created':
       return (
         <Fragment>
-          <Link href={`/users/${feed.user.id}`}>{feed.user.name}</Link>
+          <Link href={`/users/${feed.user.id}`}>
+            <a>{feed.user.name}</a>
+          </Link>
           &#160;created {feed.team.name}.
         </Fragment>
       )
@@ -25,7 +27,9 @@ const copy = (feed: IFeed) => {
     case 'user_joined':
       return (
         <Fragment>
-          <Link href={`/users/${feed.user.id}`}>{feed.user.name}</Link>
+          <Link href={`/users/${feed.user.id}`}>
+            <a>{feed.user.name}</a>
+          </Link>
           &#160;joined {feed.team.name}.
         </Fragment>
       )
