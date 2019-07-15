@@ -1,6 +1,7 @@
 export { default as schema_comment } from './comment'
 export { default as schema_comments } from './comments'
 export { default as schema_feed } from './feed'
+export { default as schema_members } from './members'
 export { default as schema_post } from './post'
 export { default as schema_posts } from './posts'
 export { default as schema_profile } from './profile'
