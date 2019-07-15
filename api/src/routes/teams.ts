@@ -1,5 +1,6 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
 
+import { toJSON } from '../lib'
 import { Team } from '../models'
 import { schema_team } from '../schemas'
 
@@ -21,9 +22,7 @@ const getTeam: RouteOptions = {
     }
 
     return {
-      team: team.toJSON({
-        virtuals: true
-      })
+      team: toJSON('team', team)
     }
   }
 }

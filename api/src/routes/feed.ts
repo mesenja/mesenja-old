@@ -1,5 +1,6 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
 
+import { toJSON } from '../lib'
 import { Feed, Team } from '../models'
 import { schema_feed } from '../schemas'
 
@@ -29,19 +30,7 @@ const getFeed: RouteOptions = {
       })
 
     return {
-      feed: feed.map(({ created, id, team, type, user }) => ({
-        created,
-        id,
-        type,
-        team: {
-          id: team.id,
-          name: team.name
-        },
-        user: {
-          id: user.id,
-          name: user.name
-        }
-      }))
+      feed: toJSON('feed', feed)
     }
   }
 }

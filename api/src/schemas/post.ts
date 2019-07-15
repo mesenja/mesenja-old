@@ -22,6 +22,9 @@ export const post = {
       properties: {
         comments: {
           type: 'number'
+        },
+        likes: {
+          type: 'number'
         }
       },
       type: 'object'
@@ -36,7 +39,15 @@ export const post = {
       type: 'array'
     },
     user: {
-      type: 'string'
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string'
+        },
+        name: {
+          type: 'string'
+        }
+      }
     }
   },
   type: 'object'

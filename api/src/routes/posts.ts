@@ -1,5 +1,6 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
 
+import { toJSON } from '../lib'
 import { Post, Team } from '../models'
 import {
   schema_comment,
@@ -27,18 +28,17 @@ const getPosts: RouteOptions = {
 
     const posts = await Post.find({
       team: team.id
-    }).sort({
-      created: -1
     })
+      .populate('user')
+      .sort({
+        created: -1
+      })
 
     return {
-      posts: posts.map(post =>
-        post.toJSON({
-          // @ts-ignore
-          userId,
-          virtuals: true
-        })
-      )
+      posts: toJSON('posts', {
+        posts,
+        userId
+      })
     }
   }
 }
@@ -78,13 +78,14 @@ const createPost: RouteOptions = {
 
     await post.save()
 
+    await post.populate('user').execPopulate()
+
     reply.status(201)
 
     return {
-      post: post.toJSON({
-        // @ts-ignore
-        userId,
-        virtuals: true
+      post: toJSON('post', {
+        post,
+        userId
       })
     }
   }
@@ -120,11 +121,12 @@ const getPost: RouteOptions = {
       throw new Error('Post not found')
     }
 
+    await post.populate('user').execPopulate()
+
     return {
-      post: post.toJSON({
-        // @ts-ignore
-        userId,
-        virtuals: true
+      post: toJSON('post', {
+        post,
+        userId
       })
     }
   }
@@ -160,13 +162,10 @@ const getComments: RouteOptions = {
       throw new Error('Post not found')
     }
 
+    await post.populate('comments.user').execPopulate()
+
     return {
-      comments: post.comments.map(comment =>
-        // @ts-ignore
-        comment.toJSON({
-          virtuals: true
-        })
-      )
+      comments: toJSON('comments', post.comments)
     }
   }
 }
@@ -208,12 +207,12 @@ const createComment: RouteOptions = {
 
     await post.save()
 
+    await comment.populate('user').execPopulate()
+
     reply.status(201)
 
     return {
-      comment: comment.toJSON({
-        virtuals: true
-      })
+      comment: toJSON('comment', comment)
     }
   }
 }

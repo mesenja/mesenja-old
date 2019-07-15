@@ -101,22 +101,4 @@ export class Post extends Typegoose {
   }
 }
 
-interface Options {
-  userId: InstanceType<User>
-}
-
-export default new Post().getModelForClass(Post, {
-  schemaOptions: {
-    toJSON: {
-      transform(doc: InstanceType<Post>, ret, options: Options) {
-        ret.meta = {
-          comments: doc.comments.length
-        }
-
-        if (options.userId) {
-          ret.liked = doc.likes.includes(options.userId)
-        }
-      }
-    }
-  }
-})
+export default new Post().getModelForClass(Post)

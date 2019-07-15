@@ -10,7 +10,15 @@ export const comment = {
       type: 'string'
     },
     user: {
-      type: 'string'
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string'
+        },
+        name: {
+          type: 'string'
+        }
+      }
     }
   },
   type: 'object'

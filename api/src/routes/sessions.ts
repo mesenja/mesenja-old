@@ -1,5 +1,6 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
 
+import { toJSON } from '../lib'
 import { Team, User } from '../models'
 import { schema_session } from '../schemas'
 
@@ -26,12 +27,8 @@ const register: RouteOptions = {
 
     return {
       token,
-      team: team.toJSON({
-        virtuals: true
-      }),
-      user: user.toJSON({
-        virtuals: true
-      })
+      team: toJSON('team', team),
+      user: toJSON('user', user)
     }
   }
 }
@@ -58,12 +55,8 @@ const login: RouteOptions = {
 
     return {
       token,
-      team: team.toJSON({
-        virtuals: true
-      }),
-      user: user.toJSON({
-        virtuals: true
-      })
+      team: toJSON('team', team),
+      user: toJSON('user', user)
     }
   }
 }
