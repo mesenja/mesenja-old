@@ -10,6 +10,7 @@ import {
   staticMethod
 } from 'typegoose'
 
+import FeedModel, { Type } from './feed'
 import UserModel, { User } from './user'
 
 export enum Role {
@@ -62,6 +63,12 @@ export class Team extends Typegoose {
     await UserModel.findByIdAndUpdate(userId, {
       team: this.id
     })
+
+    await FeedModel.create({
+      team: this.id,
+      type: Type.USER_JOINED,
+      user: userId
+    })
   }
 
   @instanceMethod
@@ -97,6 +104,18 @@ export class Team extends Typegoose {
     team.members.push(member)
 
     await team.save()
+
+    await FeedModel.create({
+      team: team.id,
+      type: Type.TEAM_CREATED,
+      user: user.id
+    })
+
+    await FeedModel.create({
+      team: team.id,
+      type: Type.USER_JOINED,
+      user: user.id
+    })
 
     return {
       team,
