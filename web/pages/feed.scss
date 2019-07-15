@@ -10,19 +10,19 @@
   align-items: center;
   display: flex;
   margin: $layout-margin 0;
+}
 
-  div {
-    margin-left: $layout-padding;
+.feed__details {
+  margin-left: $layout-padding;
+}
 
-    p {
-      margin: 0;
-    }
+.feed__copy {
+  margin: 0;
+}
 
-    span {
-      color: $color-text-light;
-      display: block;
-      font-size: $text-size-small;
-      margin-top: $layout-padding / 2;
-    }
-  }
+.feed__joined {
+  color: $color-text-light;
+  display: block;
+  font-size: $text-size-small;
+  margin-top: $layout-padding / 2;
 }

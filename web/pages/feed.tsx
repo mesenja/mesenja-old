@@ -52,9 +52,11 @@ const Feed: NextPage = () => {
           {feed.map((feed, index) => (
             <article key={index} className="feed__item">
               <Avatar user={feed.user} />
-              <div>
-                <p>{copy(feed)}</p>
-                <span>{moment(feed.created).fromNow()}</span>
+              <div className="feed__details">
+                <p className="feed__copy">{copy(feed)}</p>
+                <span className="feed__joined">
+                  {moment(feed.created).fromNow()}
+                </span>
               </div>
             </article>
           ))}
