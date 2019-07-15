@@ -1,10 +1,10 @@
-const comment = (data: any) => ({
-  body: data.body,
-  id: data.id,
-  created: data.created,
+const comment = ({ body, created, id, user }: any) => ({
+  body,
+  created,
+  id,
   user: {
-    id: data.user.id,
-    name: data.user.name
+    id: user.id,
+    name: user.name
   }
 })
 
@@ -23,45 +23,48 @@ const feed = (data: any) =>
     }
   }))
 
-const member = (data: any) => ({
-  joined: data.joined,
-  role: data.role,
+const member = ({ joined, role, user }: any) => ({
+  joined,
+  role,
   user: {
-    id: data.user.id,
-    name: data.user.name
+    id: user.id,
+    name: user.name
   }
 })
 
-const post = (data: any, userId: any) => ({
-  body: data.body,
-  created: data.created,
-  id: data.id,
-  liked: data.likes.includes(userId),
-  likes: data.likes,
+const post = (
+  { body, comments, created, id, likes, pinned, seen, user }: any,
+  userId: any
+) => ({
+  body,
+  created,
+  id,
+  likes,
+  pinned,
+  seen,
+  liked: likes.includes(userId),
   meta: {
-    comments: data.comments.length,
-    likes: data.likes.length
+    comments: comments.length,
+    likes: likes.length
   },
-  pinned: data.pinned,
-  seen: data.seen,
   user: {
-    id: data.user.id,
-    name: data.user.name
+    id: user.id,
+    name: user.name
   }
 })
 
-const team = (data: any) => ({
-  created: data.created,
-  id: data.id,
-  name: data.name,
-  slug: data.slug
+const team = ({ created, id, name, slug }: any) => ({
+  created,
+  id,
+  name,
+  slug
 })
 
-const user = (data: any) => ({
-  created: data.created,
-  email: data.email,
-  id: data.id,
-  name: data.name
+const user = ({ created, email, id, name }: any) => ({
+  created,
+  email,
+  id,
+  name
 })
 
 export default (model: string, data: any) => {
