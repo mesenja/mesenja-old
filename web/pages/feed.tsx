@@ -1,13 +1,14 @@
+import './feed.scss'
+
+import { NextPage } from 'next'
 import Head from 'next/head'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 import { SideBar } from '../components'
 import { Main } from '../layouts'
 import { useStoreState } from '../store'
 
-import './feed.scss'
-
-const Feed: FunctionComponent = () => {
+const Feed: NextPage = () => {
   const { team } = useStoreState(state => state.session)
 
   return (

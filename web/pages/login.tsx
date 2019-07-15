@@ -1,13 +1,14 @@
+import './login.scss'
+
+import { NextPage } from 'next'
 import Head from 'next/head'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 import { FormLogin, Logo } from '../components'
 import { Main } from '../layouts'
 import { useStoreActions } from '../store'
 
-import './login.scss'
-
-const Login: FunctionComponent = () => {
+const Login: NextPage = () => {
   const { login } = useStoreActions(actions => actions.session)
 
   return (

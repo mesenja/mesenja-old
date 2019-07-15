@@ -1,9 +1,9 @@
+import './side-bar.scss'
+
 import classNames from 'classnames'
 import Link from 'next/link'
-import React, { FunctionComponent } from 'react'
 import { useRouter } from 'next/router'
-
-import './side-bar.scss'
+import React, { FunctionComponent } from 'react'
 
 interface Props {
   href: string

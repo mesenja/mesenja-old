@@ -1,20 +1,21 @@
-import cookies from 'next-cookies'
-import React from 'react'
-import Router from 'next/router'
-import { Container, AppComponentType } from 'next/app'
-import { StoreProvider } from 'easy-peasy'
-
-import createStore from '../store'
-import { api } from '../services'
-
 import '../assets/main.scss'
+
+import { StoreProvider } from 'easy-peasy'
+import { NextPage } from 'next'
+import cookies from 'next-cookies'
+import { Container } from 'next/app'
+import Router from 'next/router'
+import React from 'react'
+
+import { api } from '../services'
+import createStore from '../store'
 
 interface Props {
   props: any
   state: any
 }
 
-const Mesenja: AppComponentType<Props> = ({ Component, state, props }) => {
+const Mesenja: NextPage<Props> = ({ Component, state, props }) => {
   const store = createStore(state)
 
   return (

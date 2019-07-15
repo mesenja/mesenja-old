@@ -1,13 +1,14 @@
+import './register.scss'
+
+import { NextPage } from 'next'
 import Head from 'next/head'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 import { FormRegister, Logo } from '../components'
 import { Main } from '../layouts'
 import { useStoreActions } from '../store'
 
-import './register.scss'
-
-const Register: FunctionComponent = () => {
+const Register: NextPage = () => {
   const { register } = useStoreActions(actions => actions.session)
 
   return (

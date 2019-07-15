@@ -1,6 +1,6 @@
+import { Action, Thunk, action, thunk } from 'easy-peasy'
 import cookie from 'js-cookie'
 import Router from 'next/router'
-import { Action, Thunk, action, thunk } from 'easy-peasy'
 
 import { api } from '../services'
 

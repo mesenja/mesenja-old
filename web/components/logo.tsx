@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react'
-
 import './logo.scss'
+
+import React, { FunctionComponent } from 'react'
 
 interface Props {
   className?: string

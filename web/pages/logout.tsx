@@ -1,11 +1,11 @@
+import './login.scss'
+
+import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import { FunctionComponent } from 'react'
 
 import { useStoreActions } from '../store'
 
-import './login.scss'
-
-const Logout: FunctionComponent = () => {
+const Logout: NextPage = () => {
   const { logout } = useStoreActions(actions => actions.session)
 
   const { replace } = useRouter()

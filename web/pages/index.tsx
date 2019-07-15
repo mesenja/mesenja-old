@@ -1,13 +1,14 @@
+import './index.scss'
+
+import { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 import { Logo } from '../components'
 import { Main } from '../layouts'
 
-import './index.scss'
-
-const Index: FunctionComponent = () => {
+const Index: NextPage = () => {
   return (
     <Main className="index__main">
       <Head>
