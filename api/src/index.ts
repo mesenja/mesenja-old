@@ -2,8 +2,8 @@ const { MONGO_URI, NODE_ENV, PORT, TOKEN_SECRET } = process.env
 
 import * as cors from 'cors'
 import * as fastify from 'fastify'
-import * as mongoose from 'mongoose'
 import * as jwt from 'fastify-jwt'
+import * as mongoose from 'mongoose'
 
 import routes from './routes'
 

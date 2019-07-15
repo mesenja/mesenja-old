@@ -1,7 +1,7 @@
 import {
-  Typegoose,
   InstanceType,
   Ref,
+  Typegoose,
   arrayProp,
   instanceMethod,
   prop
