@@ -1,4 +1,4 @@
-const { MONGO_URI, NODE_ENV, PORT, TOKEN_SECRET } = process.env
+const { MONGO_URI, PORT, TOKEN_SECRET } = process.env
 
 import * as cors from 'cors'
 import * as fastify from 'fastify'
@@ -13,9 +13,7 @@ mongoose.connect(MONGO_URI, {
   useNewUrlParser: true
 })
 
-const server = fastify({
-  logger: NODE_ENV === 'development'
-})
+const server = fastify()
 
 server.use(cors())
 
