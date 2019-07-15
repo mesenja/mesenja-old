@@ -1,6 +1,4 @@
-import * as bcrypt from 'bcrypt'
 import { FastifyInstance, RouteOptions } from 'fastify'
-import { kebabCase } from 'lodash'
 
 import { Team, User } from '../models'
 import { schema_session } from '../schemas'
@@ -17,18 +15,7 @@ const register: RouteOptions = {
       }
     } = request
 
-    const team = new Team({
-      name: teamName,
-      slug: kebabCase(teamName)
-    })
-
-    const user = await User.create({
-      email,
-      name,
-      password: await bcrypt.hash(password, 10)
-    })
-
-    await team.addMember(user.id, 'owner')
+    const { team, user } = await Team.createNew(teamName, name, email, password)
 
     const token = await reply.jwtSign({
       teamId: team.id,
@@ -60,23 +47,7 @@ const login: RouteOptions = {
       }
     } = request
 
-    const user = await User.findOne({
-      email
-    })
-
-    if (!user) {
-      throw new Error('User not found')
-    }
-
-    if (!(await bcrypt.compare(password, user.password))) {
-      throw new Error('Invalid password')
-    }
-
-    const team = await Team.findById(user.team)
-
-    if (!team) {
-      throw new Error('Team not found')
-    }
+    const { team, user } = await User.login(email, password)
 
     const token = await reply.jwtSign({
       teamId: team.id,

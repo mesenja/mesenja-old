@@ -1,10 +1,13 @@
+import { kebabCase } from 'lodash'
 import {
-  Typegoose,
   InstanceType,
+  ModelType,
   Ref,
+  Typegoose,
   arrayProp,
+  instanceMethod,
   prop,
-  instanceMethod
+  staticMethod
 } from 'typegoose'
 
 import UserModel, { User } from './user'
@@ -45,7 +48,7 @@ export class Team extends Typegoose {
   async addMember(
     this: InstanceType<Team>,
     userId: InstanceType<User>,
-    role: string
+    role: Role
   ) {
     const member = new MemberModel({
       role,
@@ -69,6 +72,36 @@ export class Team extends Typegoose {
         user.equals(userId)
       )
     )
+  }
+
+  @staticMethod
+  static async createNew(
+    this: ModelType<Team>,
+    teamName: string,
+    name: string,
+    email: string,
+    password: string
+  ) {
+    const team = new this({
+      name: teamName,
+      slug: kebabCase(teamName)
+    })
+
+    const user = await UserModel.createNew(name, email, password, team.id)
+
+    const member = new MemberModel({
+      role: Role.OWNER,
+      user: user.id
+    })
+
+    team.members.push(member)
+
+    await team.save()
+
+    return {
+      team,
+      user
+    }
   }
 }
 
