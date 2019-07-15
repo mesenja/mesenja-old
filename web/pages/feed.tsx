@@ -17,7 +17,7 @@ const copy = (feed: IFeed) => {
     case 'team_created':
       return (
         <Fragment>
-          <Link href={`/users/${feed.user.id}`}>
+          <Link href={`/members/${feed.user.id}`}>
             <a>{feed.user.name}</a>
           </Link>
           &#160;created {feed.team.name}.
@@ -27,7 +27,7 @@ const copy = (feed: IFeed) => {
     case 'user_joined':
       return (
         <Fragment>
-          <Link href={`/users/${feed.user.id}`}>
+          <Link href={`/members/${feed.user.id}`}>
             <a>{feed.user.name}</a>
           </Link>
           &#160;joined {feed.team.name}.
@@ -47,6 +47,7 @@ const Feed: NextPage = () => {
         <Head>
           <title>Feed: {team.name}: Mesenja</title>
         </Head>
+        <h1>Feed</h1>
         <section>
           {feed.map((feed, index) => (
             <article key={index} className="feed__item">

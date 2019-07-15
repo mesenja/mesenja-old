@@ -42,6 +42,10 @@ class API {
     return this.request('/feed')
   }
 
+  members() {
+    return this.request('/members')
+  }
+
   async request(name: string, method?: any, body?: any) {
     const headers: any = {}
 
