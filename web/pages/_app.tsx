@@ -11,17 +11,16 @@ import { api } from '../services'
 import createStore from '../store'
 
 interface Props {
-  props: any
   state: any
 }
 
-const Mesenja: NextPage<Props> = ({ Component, state, props }) => {
+const Mesenja: NextPage<Props> = ({ Component, state }) => {
   const store = createStore(state)
 
   return (
     <Container>
       <StoreProvider store={store}>
-        <Component {...props} />
+        <Component />
       </StoreProvider>
     </Container>
   )
@@ -42,15 +41,9 @@ Mesenja.getInitialProps = async ({ Component, ctx }) => {
     }
   }
 
-  let props = {}
-
-  if (Component.getInitialProps) {
-    props = await Component.getInitialProps(ctx)
-  }
+  const state: any = {}
 
   const { token } = cookies(ctx)
-
-  const state: any = {}
 
   if (token) {
     api.setToken(token)
@@ -61,6 +54,12 @@ Mesenja.getInitialProps = async ({ Component, ctx }) => {
       team,
       user
     }
+  }
+
+  if (Component.getInitialProps) {
+    const props = await Component.getInitialProps(ctx)
+
+    Object.assign(state, props)
   }
 
   const { pathname } = ctx
@@ -75,7 +74,6 @@ Mesenja.getInitialProps = async ({ Component, ctx }) => {
   }
 
   return {
-    props,
     state
   }
 }

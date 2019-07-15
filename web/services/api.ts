@@ -38,6 +38,10 @@ class API {
     return this.request('/profile')
   }
 
+  feed() {
+    return this.request('/feed')
+  }
+
   async request(name: string, method?: any, body?: any) {
     const headers: any = {}
 
