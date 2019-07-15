@@ -73,12 +73,7 @@ export class Team extends Typegoose {
 
   @instanceMethod
   isMember(this: InstanceType<Team>, userId: InstanceType<User>) {
-    return Boolean(
-      this.members.find(({ user }) =>
-        // @ts-ignore
-        user.equals(userId)
-      )
-    )
+    return Boolean(this.members.find(({ user }) => user.equals(userId)))
   }
 
   @staticMethod
