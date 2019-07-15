@@ -32,7 +32,7 @@ const getMembers: RouteOptions = {
 const getMember: RouteOptions = {
   method: 'GET',
   schema: schema_member,
-  url: '/member/:id',
+  url: '/members/:id',
   async handler(request) {
     const {
       params: { id }
