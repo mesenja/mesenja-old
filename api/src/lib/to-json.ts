@@ -32,7 +32,7 @@ const member = (data: any) => ({
   }
 })
 
-const post = (data, userId) => ({
+const post = (data: any, userId: any) => ({
   body: data.body,
   created: data.created,
   id: data.id,
@@ -74,6 +74,12 @@ export default (model: string, data: any) => {
 
     case 'feed':
       return feed(data)
+
+    case 'member':
+      return {
+        member: member(data.member),
+        posts: data.posts.map((item: any) => post(item, data.userId))
+      }
 
     case 'members':
       return data.map((item: any) => member(item))

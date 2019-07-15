@@ -1,3 +1,5 @@
+import { post } from './post'
+
 export const member = {
   properties: {
     joined: {
@@ -19,4 +21,19 @@ export const member = {
     }
   },
   type: 'object'
+}
+
+export default {
+  response: {
+    200: {
+      properties: {
+        member,
+        posts: {
+          items: post,
+          type: 'array'
+        }
+      },
+      type: 'object'
+    }
+  }
 }
