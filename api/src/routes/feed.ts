@@ -22,16 +22,26 @@ const getFeed: RouteOptions = {
 
     const feed = await Feed.find({
       team: team.id
-    }).sort({
-      created: -1
     })
+      .populate('team user')
+      .sort({
+        created: -1
+      })
 
     return {
-      feed: feed.map(item =>
-        item.toJSON({
-          virtuals: true
-        })
-      )
+      feed: feed.map(({ created, id, team, type, user }) => ({
+        created,
+        id,
+        type,
+        team: {
+          id: team.id,
+          name: team.name
+        },
+        user: {
+          id: user.id,
+          name: user.name
+        }
+      }))
     }
   }
 }

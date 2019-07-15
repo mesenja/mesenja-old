@@ -6,11 +6,30 @@ export const feed = {
     id: {
       type: 'string'
     },
+    team: {
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string'
+        },
+        name: {
+          type: 'string'
+        }
+      }
+    },
     type: {
       type: 'string'
     },
     user: {
-      type: 'string'
+      type: 'object',
+      properties: {
+        id: {
+          type: 'string'
+        },
+        name: {
+          type: 'string'
+        }
+      }
     }
   },
   type: 'object'
