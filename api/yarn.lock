@@ -415,10 +415,10 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/got@^9.6.1":
-  version "9.6.1"
-  resolved "https://registry.yarnpkg.com/@types/got/-/got-9.6.1.tgz#2c0fac7660c3bf75d0956018e73c456edcb1b157"
-  integrity sha512-910qhgjC0nhbrNU55ItiTJYoIBin0Ej0h11bH50GmetA5FKZ3UeH/Kit7vDx2myA8WiJR06FvC4H7kchA912/A==
+"@types/got@^9.6.2":
+  version "9.6.2"
+  resolved "https://registry.yarnpkg.com/@types/got/-/got-9.6.2.tgz#a569798450f327de9d41306364f53004693b0f5b"
+  integrity sha512-Md/d9kSfdyZvVqhmUb3l+YPCmvIZG7qmM9hvW7dKJfTwpaZ4HBSqYpPhz3Dh0ywTfaEHKlFvPL+HMXIcNzP2tw==
   dependencies:
     "@types/node" "*"
     "@types/tough-cookie" "*"
@@ -467,10 +467,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.0.10.tgz#51babf9c7deadd5343620055fc8aff7995c8b031"
   integrity sha512-LcsGbPomWsad6wmMNv7nBLw7YYYyfdYcz6xryKYQhx89c3XXan+8Q6AJ43G5XDIaklaVkK3mE4fCb0SBvMiPSQ==
 
-"@types/node@^12.6.2":
-  version "12.6.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.2.tgz#a5ccec6abb6060d5f20d256fb03ed743e9774999"
-  integrity sha512-gojym4tX0FWeV2gsW4Xmzo5wxGjXGm550oVUII7f7G5o4BV6c7DBdiG1RRQd+y1bvqRyYtPfMK85UM95vsapqQ==
+"@types/node@^12.6.8":
+  version "12.6.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.6.8.tgz#e469b4bf9d1c9832aee4907ba8a051494357c12c"
+  integrity sha512-aX+gFgA5GHcDi89KG5keey2zf0WfZk/HAQotEamsK2kbey+8yGKcson0hbK8E+v0NArlCJQCqMP161YhV6ZXLg==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -2799,10 +2799,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@^5.6.4:
-  version "5.6.4"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.4.tgz#049ca8ad5ac16a528c23a20301579f7ac92fdb0e"
-  integrity sha512-mwMpa82uGvxSmkwTbxCmXb8/Nn9+2e+X61DiGFV9ZeenTsJKcdjc0QMGwDyDEkLcnYwQ5VrQbiB9548RZbFgVw==
+mongoose@^5.6.5:
+  version "5.6.5"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.5.tgz#fdddf9a3c588a670b81b23bec203440f5ddf2876"
+  integrity sha512-c8bIo8mxbf1ybwo9jgPKcJRICQBlIMKwDWt2A+M7h0AutroQ5EqzRAYOK1vrHwwwq00EcJyVwjVBW2wv8E9Wfw==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
@@ -4167,10 +4167,10 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typegoose@^5.8.0:
-  version "5.8.0"
-  resolved "https://registry.yarnpkg.com/typegoose/-/typegoose-5.8.0.tgz#28721dabf53999097b20800fd9f38ae182b64d78"
-  integrity sha512-I3r7mb7Ikm7x0k1PyizXdl68iINI/i8psQCbIdVyID/4yZ5zbWn3bKRuRUDi47jLmEdnVDi7Pg2NQNrS7dS/gA==
+typegoose@^5.8.1:
+  version "5.8.1"
+  resolved "https://registry.yarnpkg.com/typegoose/-/typegoose-5.8.1.tgz#b9b4d13d41a01e860e7716f0ecf818d854df3ea1"
+  integrity sha512-qRXohOShQf6yAxmBfL3c/A08w82iIOKvFAPjz5j+SaMmGNstz4lGdM43rN8tr4SPKSDZYN5EehDpWSU4yHWLTQ==
   dependencies:
     reflect-metadata "^0.1.13"
 

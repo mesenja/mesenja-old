@@ -14,7 +14,7 @@
     "identicon.js": "^2.3.3",
     "js-cookie": "^2.2.0",
     "moment": "^2.24.0",
-    "next": "^9.0.1",
+    "next": "^9.0.2",
     "next-cookies": "^1.1.2",
     "node-sass": "^4.12.0",
     "prop-types": "^15.7.2",
@@ -25,7 +25,7 @@
     "@types/classnames": "^2.2.9",
     "@types/identicon.js": "^2.3.0",
     "@types/js-cookie": "^2.2.2",
-    "@types/node": "^12.6.3",
+    "@types/node": "^12.6.8",
     "@types/react": "^16.8.23",
     "env-cmd": "^9.0.3",
     "typescript": "^3.5.3"
