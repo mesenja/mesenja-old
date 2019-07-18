@@ -27,7 +27,7 @@ const Members: NextPage = () => {
         <table>
           <thead>
             <tr>
-              <th className="members__name">Name</th>
+              <th>Name</th>
               <th>Role</th>
               <th>Joined</th>
             </tr>
@@ -35,7 +35,7 @@ const Members: NextPage = () => {
           <tbody>
             {members.map(({ joined, role, user }, index) => (
               <tr key={index}>
-                <td className="members__details">
+                <td className="members__name">
                   <Avatar size="small" user={user} />
                   {user.name}
                 </td>
