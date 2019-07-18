@@ -35,13 +35,9 @@ const Members: NextPage = () => {
           <tbody>
             {members.map(({ joined, role, user }, index) => (
               <tr key={index}>
-                <td>
-                  <Link href={`/members/${user.id}`}>
-                    <a className="members__member">
-                      <Avatar className="members__member__avatar" user={user} />
-                      <span className="members__member__name">{user.name}</span>
-                    </a>
-                  </Link>
+                <td className="members__details">
+                  <Avatar size="small" user={user} />
+                  {user.name}
                 </td>
                 <td>{capitalize(role)}</td>
                 <td>{moment(joined).fromNow()}</td>

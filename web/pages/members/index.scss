@@ -10,15 +10,12 @@
   width: 80%;
 }
 
-.members__member {
+.members__details {
   align-items: center;
   display: flex;
-}
+  font-weight: $text-weight-bold;
 
-.members__member__avatar {
-  margin-right: $layout-padding;
-}
-
-.members__member__name {
-  font-size: $text-size-large;
+  img {
+    margin-right: $layout-padding;
+  }
 }
