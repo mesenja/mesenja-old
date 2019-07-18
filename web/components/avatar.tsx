@@ -3,7 +3,7 @@ import './avatar.scss'
 import Identicon from 'identicon.js'
 import React, { FunctionComponent } from 'react'
 
-import { User } from '../store/session'
+import { User } from '../store/users'
 
 interface Props {
   className?: string

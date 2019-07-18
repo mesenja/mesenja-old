@@ -1,7 +1,7 @@
 import { Action, Thunk, action, thunk } from 'easy-peasy'
 
 import { api } from '../services'
-import { User } from './session'
+import { User } from './users'
 
 export interface Post {
   body: string

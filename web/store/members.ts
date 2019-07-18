@@ -2,7 +2,7 @@ import { Action, Thunk, action, thunk } from 'easy-peasy'
 
 import { api } from '../services'
 import { Post } from './posts'
-import { User } from './session'
+import { User } from './users'
 
 export interface Member {
   joined: string

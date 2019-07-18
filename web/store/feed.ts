@@ -1,7 +1,8 @@
 import { Action, Thunk, action, thunk } from 'easy-peasy'
 
 import { api } from '../services'
-import { Team, User } from './session'
+import { Team } from './session'
+import { User } from './users'
 
 export interface Feed {
   created: string

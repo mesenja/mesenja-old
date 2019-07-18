@@ -3,31 +3,13 @@ import cookie from 'js-cookie'
 import Router from 'next/router'
 
 import { api } from '../services'
-
-export interface User {
-  created: string
-  email: string
-  id: string
-  name: string
-}
+import { LoginProps, RegisterProps, User } from './users'
 
 export interface Team {
   created: string
   id: string
   name: string
   slug: string
-}
-
-export interface RegisterProps {
-  email: string
-  name: string
-  password: string
-  teamName: string
-}
-
-export interface LoginProps {
-  email: string
-  password: string
 }
 
 export interface SessionProps {
