@@ -17,7 +17,7 @@ const NavLink: FunctionComponent<Props> = ({ href, icon }) => {
     <Link href={href}>
       <a
         className={classNames({
-          active: route === href
+          active: route.indexOf(href) === 0
         })}
       >
         <img src={`/static/img/nav_${icon}.svg`} />

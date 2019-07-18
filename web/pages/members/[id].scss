@@ -1,0 +1,45 @@
+@import '../../assets/variables';
+
+.member__main {
+  flex: 1;
+  padding: 0 $layout-margin;
+  overflow: auto;
+}
+
+.member__header {
+  align-items: center;
+  display: flex;
+  margin: $layout-margin 0;
+}
+
+.member__header__avatar {
+  margin-right: $layout-padding;
+}
+
+.member__header__details {
+  margin-left: $layout-padding;
+}
+
+.member__header__details__name {
+  margin: 0;
+}
+
+.member__header__details__meta {
+  color: $color-text-light;
+  display: block;
+  margin-top: $layout-padding;
+}
+
+.member__posts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: $layout-padding #{-$layout-padding};
+  max-width: ($column-width * 3) + ($layout-padding * 6);
+}
+
+.member__posts__post {
+  background: $color-background-light;
+  border-radius: $border-radius;
+  margin: $layout-padding;
+  max-width: $column-width;
+}

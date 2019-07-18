@@ -1,5 +1,7 @@
 export { default as Avatar } from './avatar'
+export { default as Body } from './body'
 export { default as FormLogin } from './form.login'
 export { default as FormRegister } from './form.register'
 export { default as Logo } from './logo'
+export { default as Post } from './post'
 export { default as SideBar } from './side-bar'

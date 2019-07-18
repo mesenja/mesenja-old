@@ -6,19 +6,19 @@
   overflow: auto;
 }
 
-.members__item {
+.members__name {
+  width: 80%;
+}
+
+.members__member {
   align-items: center;
   display: flex;
-  margin: $layout-margin 0;
 }
 
-.members__details {
-  margin-left: $layout-padding;
+.members__member__avatar {
+  margin-right: $layout-padding;
 }
 
-.members__joined {
-  color: $color-text-light;
-  display: block;
-  font-size: $text-size-small;
-  margin-top: $layout-padding / 2;
+.members__member__name {
+  font-size: $text-size-large;
 }

@@ -1,11 +1,13 @@
 import { Action, Thunk, action, thunk } from 'easy-peasy'
 
 import { api } from '../services'
+import { Post } from './posts'
 import { User } from './session'
 
 export interface Member {
   joined: string
   role: string
+  posts?: Post[]
   user: User
 }
 

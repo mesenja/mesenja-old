@@ -7,10 +7,15 @@ import { User } from '../store/session'
 
 interface Props {
   className?: string
+  size?: 'regular' | 'small'
   user: string | User
 }
 
-const Avatar: FunctionComponent<Props> = ({ className, user }) => {
+const Avatar: FunctionComponent<Props> = ({
+  className,
+  size = 'regular',
+  user
+}) => {
   const id = typeof user === 'string' ? user : user.id
 
   const avatar = new Identicon(id, {
@@ -19,7 +24,12 @@ const Avatar: FunctionComponent<Props> = ({ className, user }) => {
     size: 200
   }).toString()
 
-  return <img className="avatar" src={`data:image/svg+xml;base64,${avatar}`} />
+  return (
+    <img
+      className={`avatar ${className} avatar__${size}`}
+      src={`data:image/svg+xml;base64,${avatar}`}
+    />
+  )
 }
 
 export default Avatar

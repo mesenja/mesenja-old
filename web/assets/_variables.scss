@@ -1,10 +1,11 @@
-$color-primary: rgb(31, 34, 41);
+$color-primary: #2c3e50;
 $color-primary-dark: darken($color-primary, 10%);
 $color-primary-light: lighten($color-primary, 10%);
-$color-accent: rgb(73, 211, 180);
+$color-accent: #1abc9c;
 
 $color-background: #fff;
 $color-background-dark: darken($color-background, 5%);
+$color-background-light: darken($color-background, 2%);
 $color-border: $color-background-dark;
 $color-highlight: lighten(#fc0, 45%);
 $color-modal: rgba(0, 0, 0, 0.25);
@@ -26,8 +27,6 @@ $layout-margin: 2em;
 $layout-padding: 1em;
 
 $border-radius: 0.25em;
-
-$responsive-break: 480px;
 
 $spinner-size: 2em;
 $spinner-border-width: 2px;

@@ -2,6 +2,14 @@
 
 .avatar {
   border-radius: $border-radius;
+}
+
+.avatar__regular {
   height: $avatar-size;
   width: $avatar-size;
+}
+
+.avatar__small {
+  height: $avatar-size / 2;
+  width: $avatar-size / 2;
 }

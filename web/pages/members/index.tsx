@@ -1,5 +1,6 @@
 import './index.scss'
 
+import { capitalize } from 'lodash'
 import moment from 'moment'
 import { NextPage } from 'next'
 import Head from 'next/head'
@@ -23,21 +24,31 @@ const Members: NextPage = () => {
           <title>Members: {team.name}: Mesenja</title>
         </Head>
         <h1>Members</h1>
-        <section>
-          {members.map((member, index) => (
-            <article key={index} className="members__item">
-              <Avatar user={member.user} />
-              <div className="members__details">
-                <Link href={`/members/${member.user.id}`}>
-                  <a>{member.user.name}</a>
-                </Link>
-                <span className="members__joined">
-                  Joined {moment(member.joined).fromNow()}
-                </span>
-              </div>
-            </article>
-          ))}
-        </section>
+        <table>
+          <thead>
+            <tr>
+              <th className="members__name">Name</th>
+              <th>Role</th>
+              <th>Joined</th>
+            </tr>
+          </thead>
+          <tbody>
+            {members.map(({ joined, role, user }, index) => (
+              <tr key={index}>
+                <td>
+                  <Link href={`/members/${user.id}`}>
+                    <a className="members__member">
+                      <Avatar className="members__member__avatar" user={user} />
+                      <span className="members__member__name">{user.name}</span>
+                    </a>
+                  </Link>
+                </td>
+                <td>{capitalize(role)}</td>
+                <td>{moment(joined).fromNow()}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </main>
     </Main>
   )

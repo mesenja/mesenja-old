@@ -42,8 +42,16 @@ class API {
     return this.request('/feed')
   }
 
+  posts() {
+    return this.request('/posts')
+  }
+
   members() {
     return this.request('/members')
+  }
+
+  member(id: string) {
+    return this.request(`/members/${id}`)
   }
 
   async request(name: string, method?: any, body?: any) {
