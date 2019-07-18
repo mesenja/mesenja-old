@@ -3,6 +3,9 @@ export const post = {
     body: {
       type: 'string'
     },
+    commented: {
+      type: 'boolean'
+    },
     created: {
       type: 'string'
     },
@@ -11,12 +14,6 @@ export const post = {
     },
     liked: {
       type: 'boolean'
-    },
-    likes: {
-      items: {
-        type: 'string'
-      },
-      type: 'array'
     },
     meta: {
       properties: {
@@ -32,14 +29,7 @@ export const post = {
     pinned: {
       type: 'boolean'
     },
-    seen: {
-      items: {
-        type: 'string'
-      },
-      type: 'array'
-    },
     user: {
-      type: 'object',
       properties: {
         id: {
           type: 'string'
@@ -47,7 +37,8 @@ export const post = {
         name: {
           type: 'string'
         }
-      }
+      },
+      type: 'object'
     }
   },
   type: 'object'

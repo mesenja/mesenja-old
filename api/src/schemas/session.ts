@@ -5,11 +5,11 @@ export default {
   response: {
     201: {
       properties: {
+        team,
+        user,
         token: {
           type: 'string'
-        },
-        team,
-        user
+        }
       },
       type: 'object'
     }

@@ -33,15 +33,16 @@ const member = ({ joined, role, user }: any) => ({
 })
 
 const post = (
-  { body, comments, created, id, likes, pinned, seen, user }: any,
+  { body, comments, created, id, likes, pinned, user }: any,
   userId: any
 ) => ({
   body,
   created,
   id,
-  likes,
   pinned,
-  seen,
+  commented: Boolean(
+    comments.find((comment: any) => comment.user.equals(userId))
+  ),
   liked: likes.includes(userId),
   meta: {
     comments: comments.length,
