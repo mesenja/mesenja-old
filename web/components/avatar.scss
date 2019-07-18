@@ -1,15 +1,13 @@
 @import '../assets/variables';
 
-.avatar {
-  border-radius: $border-radius;
-}
-
 .avatar__regular {
+  border-radius: $border-radius;
   height: $avatar-size;
   width: $avatar-size;
 }
 
 .avatar__small {
+  border-radius: $border-radius / 2;
   height: $avatar-size / 2;
   width: $avatar-size / 2;
 }

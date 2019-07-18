@@ -26,7 +26,7 @@ const Avatar: FunctionComponent<Props> = ({
 
   return (
     <img
-      className={`avatar ${className} avatar__${size}`}
+      className={`avatar__${size} ${className}`}
       src={`data:image/svg+xml;base64,${avatar}`}
     />
   )
