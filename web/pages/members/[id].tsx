@@ -42,8 +42,10 @@ const Member: NextPage = () => {
           <section className="member__header__details">
             <h1 className="member__header__details__name">{user.name}</h1>
             <span className="member__header__details__meta">
-              {capitalize(role)}
-              &#160;Joined {moment(joined).fromNow()}
+              <span className="member__header__details__meta__role">
+                {role}
+              </span>
+              Joined {moment(joined).fromNow()}
             </span>
           </section>
         </header>

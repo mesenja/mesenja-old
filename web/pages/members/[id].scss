@@ -25,9 +25,18 @@
 }
 
 .member__header__details__meta {
+  align-items: center;
   color: $color-text-light;
-  display: block;
+  display: flex;
   margin-top: $layout-padding;
+}
+
+.member__header__details__meta__role {
+  background: $color-accent;
+  border-radius: $border-radius;
+  color: $color-background;
+  margin-right: $layout-padding;
+  padding: $layout-padding / 3;
 }
 
 .member__posts {
