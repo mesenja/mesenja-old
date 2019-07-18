@@ -143,20 +143,21 @@ strong {
 
 table {
   border-collapse: collapse;
+  margin: $layout-margin 0;
   width: 100%;
 
+  tbody {
+    tr {
+      border-top: 1px solid $color-border;
+    }
+  }
+
   thead {
-    th {
-      background: $color-accent;
-      color: $color-background;
-      font-weight: $text-weight-bold;
+    tr {
+      border-bottom: 2px solid $color-border;
 
-      &:first-child {
-        border-radius: $border-radius 0 0 $border-radius;
-      }
-
-      &:last-child {
-        border-radius: 0 $border-radius $border-radius 0;
+      th {
+        font-weight: $text-weight-bold;
       }
     }
   }
