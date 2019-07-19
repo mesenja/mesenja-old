@@ -28,7 +28,7 @@ const NavLink: FunctionComponent<Props> = ({ href, icon }) => {
 
 const SideBar: FunctionComponent = () => {
   return (
-    <header className="side-bar">
+    <header className="sideBar">
       <nav>
         <NavLink href="/feed" icon="feed" />
         <NavLink href="/posts" icon="posts" />

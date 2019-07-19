@@ -1,9 +1,10 @@
 @import '../assets/variables';
 
-.side-bar {
+.sideBar {
   background: $color-primary;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   justify-content: space-between;
 
   nav {
