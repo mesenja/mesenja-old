@@ -1,9 +1,9 @@
 const { MONGO_URI, PORT, TOKEN_SECRET } = process.env
 
-import * as cors from 'cors'
-import * as fastify from 'fastify'
-import * as jwt from 'fastify-jwt'
-import * as mongoose from 'mongoose'
+import cors from 'cors'
+import fastify from 'fastify'
+import jwt from 'fastify-jwt'
+import mongoose from 'mongoose'
 
 import routes from './routes'
 

@@ -1,4 +1,5 @@
 import { FastifyInstance, RouteOptions } from 'fastify'
+import moment from 'moment'
 
 import { toJSON } from '../lib'
 import { Post, Team } from '../models'
@@ -16,6 +17,10 @@ const getPosts: RouteOptions = {
   async handler(request) {
     const { teamId, userId } = await request.jwtVerify()
 
+    const {
+      query: { after, before, limit }
+    } = request
+
     const team = await Team.findById(teamId)
 
     if (!team) {
@@ -26,9 +31,34 @@ const getPosts: RouteOptions = {
       throw new Error('Not a member')
     }
 
-    const posts = await Post.find({
+    const query: any = {
       team: team.id
-    })
+    }
+
+    if (after) {
+      const afterDate = moment(after)
+
+      if (afterDate.isValid()) {
+        query.created = {
+          $gt: afterDate.toDate()
+        }
+      }
+    }
+
+    if (before) {
+      const beforeDate = moment(before)
+
+      if (beforeDate.isValid()) {
+        query.created = {
+          $lt: beforeDate.toDate()
+        }
+      }
+    }
+
+    const postLimit = Number(limit)
+
+    const posts = await Post.find(query)
+      .limit(postLimit || 20)
       .populate('user')
       .sort({
         created: -1
@@ -52,7 +82,7 @@ const createPost: RouteOptions = {
 
     const {
       body: {
-        post: { body, pinned }
+        post: { body, pinned, tagged }
       }
     } = request
 
@@ -69,6 +99,7 @@ const createPost: RouteOptions = {
     const post = new Post({
       body,
       pinned,
+      tagged,
       team: team.id,
       user: userId
     })

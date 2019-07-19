@@ -29,6 +29,12 @@ export const post = {
     pinned: {
       type: 'boolean'
     },
+    tagged: {
+      items: {
+        type: 'string'
+      },
+      type: 'array'
+    },
     user: {
       properties: {
         id: {
