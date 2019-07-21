@@ -1,4 +1,5 @@
 import { Action, Thunk, action, thunk } from 'easy-peasy'
+import { uniqBy } from 'lodash'
 
 import { api } from '../services'
 import { User } from './users'
@@ -8,35 +9,50 @@ export interface Post {
   created: string
   id: string
   liked: boolean
-  likes: string[]
   meta: {
     comments: number
     likes: number
   }
   pinned: boolean
-  seen: string[]
+  tagged: string[]
   user: User
 }
 
+export interface FetchProps {
+  after?: number
+  before?: string
+  limit?: string
+}
+
 export interface PostsModel {
+  loading: boolean
   posts: Post[]
 
-  fetch: Thunk<PostsModel>
+  fetch: Thunk<PostsModel, FetchProps>
 
-  set: Action<PostsModel, Post[]>
+  setLoading: Action<PostsModel, boolean>
+  setPosts: Action<PostsModel, Post[]>
 }
 
 const posts: PostsModel = {
+  loading: false,
   posts: [],
 
-  fetch: thunk(async actions => {
-    const { posts } = await api.posts()
+  fetch: thunk(async (actions, payload) => {
+    actions.setLoading(true)
 
-    actions.set(posts)
+    const { posts } = await api.posts(payload)
+
+    actions.setPosts(posts)
+
+    actions.setLoading(false)
   }),
 
-  set: action((state, payload) => {
-    state.posts = payload
+  setLoading: action((state, payload) => {
+    state.loading = payload
+  }),
+  setPosts: action((state, payload) => {
+    state.posts = uniqBy([...state.posts, ...payload], 'id')
   })
 }
 

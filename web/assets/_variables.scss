@@ -7,6 +7,7 @@ $color-background: #fff;
 $color-background-dark: darken($color-background, 5%);
 $color-background-light: darken($color-background, 2%);
 $color-border: $color-background-dark;
+$color-border-dark: darken($color-background-dark, 5%);
 $color-highlight: lighten(#fc0, 45%);
 $color-modal: rgba(0, 0, 0, 0.25);
 $color-notification: #ff3b30;

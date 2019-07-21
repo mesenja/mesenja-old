@@ -1,5 +1,8 @@
-import axios from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
+import cookie from 'js-cookie'
 import getConfig from 'next/config'
+
+import { FetchProps as FetchPostsProps } from '../store/posts'
 
 const {
   publicRuntimeConfig: { API_URI }
@@ -7,6 +10,14 @@ const {
 
 class API {
   token?: string
+
+  constructor() {
+    const token = cookie.get('token')
+
+    if (token) {
+      this.setToken(token)
+    }
+  }
 
   setToken(token: string) {
     this.token = token
@@ -42,8 +53,8 @@ class API {
     return this.request('/feed')
   }
 
-  posts() {
-    return this.request('/posts')
+  posts(props?: FetchPostsProps) {
+    return this.request('/posts', 'get', props)
   }
 
   members() {
@@ -61,12 +72,19 @@ class API {
       headers.authorization = `Bearer ${this.token}`
     }
 
-    const { data } = await axios({
+    const options: AxiosRequestConfig = {
       headers,
       method,
-      data: body,
       url: API_URI + name
-    })
+    }
+
+    if (/(post|put)/i.test(method)) {
+      options.data = body
+    } else {
+      options.params = body
+    }
+
+    const { data } = await axios(options)
 
     return data
   }

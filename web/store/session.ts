@@ -35,6 +35,12 @@ const login = (token: string) => {
   Router.replace('/feed')
 }
 
+const logout = () => {
+  cookie.remove('token')
+
+  Router.replace('/')
+}
+
 const user: SessionModel = {
   register: thunk(async (actions, { email, name, password, teamName }) => {
     const response = await api.register(name, email, password, teamName)
@@ -61,10 +67,10 @@ const user: SessionModel = {
   }),
 
   logout: action(state => {
-    cookie.remove('token')
-
     state.team = undefined
     state.user = undefined
+
+    logout()
   }),
   session: action((state, payload) => {
     Object.assign(state, payload)
