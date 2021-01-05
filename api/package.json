@@ -8,7 +8,7 @@
     "test": "env-cmd nyc ava"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bcrypt": "^3.0.6",
     "cors": "^2.8.5",
     "fastify": "^2.6.0",
